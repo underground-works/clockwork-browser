@@ -1,0 +1,30 @@
+{
+  "name": "clockwork-browser",
+  "version": "0.1.0",
+  "description": "Clockwork client-side metrics collection and toolbar.",
+  "homepage": "https://underground.works/clockwork",
+  "repository": "github:underground-works/clockwork-browser",
+  "author": "its",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/underground-works/clockwork-browser/issues"
+  },
+  "keywords": [
+    "debugging", "profiling", "logging", "laravel", "lumen", "slim", "devtools"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "web-vitals": "^0.2.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "babel-loader": "^8.1.0",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  }
+}
