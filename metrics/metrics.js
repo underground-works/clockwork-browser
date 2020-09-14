@@ -3,9 +3,12 @@ import { getCLS, getFID, getLCP, getFCP, getTTFB } from 'web-vitals'
 export default class Metrics
 {
 	constructor() {
-		this.requestId = this.readCookie('clockwork_id')
-		this.path = this.readCookie('clockwork_path', '/__clockwork/')
-		this.updateToken = this.readCookie('clockwork_token')
+		let payload = this.payload()
+
+		this.enabled = payload.metrics
+		this.requestId = payload.requestId
+		this.path = payload.path || '/__clockwork/'
+		this.updateToken = payload.token
 
 		this.metrics = {
 			redirect: null,
@@ -27,6 +30,8 @@ export default class Metrics
 	}
 
 	collectMetrics() {
+		if (! this.enabled) return
+
 		document.addEventListener('readystatechange', ev => {
 			if (document.readyState != 'complete') return
 
@@ -45,6 +50,8 @@ export default class Metrics
 	}
 
 	collectVitals() {
+		if (! this.enabled) return
+
 		getCLS(v => this.updateVitals('cls', v.value))
 		getFID(v => this.updateVitals('fid', v.value))
 		getLCP(v => this.updateVitals('lcp', v.value))
@@ -52,12 +59,10 @@ export default class Metrics
 		getTTFB(v => this.updateVitals('ttfb', v.value))
 	}
 
-	readCookie(name, defaultValue) {
-		let _, value
+	payload() {
+		let matches = document.cookie.match(/(?:^| )x-clockwork=([^;]*)/)
 
-		[ _, value ] = document.cookie.match(new RegExp(`(?:^| )${name}=([^;]*)`));
-
-		return decodeURIComponent(value) || defaultValue
+		return matches ? JSON.parse(decodeURIComponent(matches[1])) : {}
 	}
 
 	updateMetrics(metrics) {

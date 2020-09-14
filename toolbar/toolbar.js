@@ -5,11 +5,16 @@ import styles from './styles'
 export default class Toolbar
 {
 	constructor() {
-		this.requestId = this.readCookie('clockwork_id')
-		this.path = this.readCookie('clockwork_path', '/__clockwork/')
+		let payload = this.payload()
+
+		this.enabled = payload.toolbar
+		this.requestId = payload.requestId
+		this.path = payload.path || '/__clockwork/'
 	}
 
 	show() {
+		if (! this.enabled) return
+
 		fetch(`${this.path}${this.requestId}`)
 			.then(request => request.json())
 			.then(request => this.render(new Request(request)))
@@ -220,11 +225,9 @@ export default class Toolbar
 		document.querySelector('body').append(style)
 	}
 
-	readCookie(name, defaultValue) {
-		let _, value
+	payload() {
+		let matches = document.cookie.match(/(?:^| )x-clockwork=([^;]*)/)
 
-		[ _, value ] = document.cookie.match(new RegExp(`(?:^| )${name}=([^;]*)`));
-
-		return decodeURIComponent(value) || defaultValue
+		return matches ? JSON.parse(decodeURIComponent(matches[1])) : {}
 	}
 }
