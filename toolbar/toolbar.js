@@ -12,12 +12,19 @@ export default class Toolbar
 		this.path = payload.path || '/__clockwork/'
 	}
 
-	show() {
+	show(attempts = 0) {
 		if (! this.enabled) return
+		if (attempts > 3) return
 
 		fetch(`${this.path}${this.requestId}`)
 			.then(request => request.json())
-			.then(request => this.render(new Request(request)))
+			.then(request => {
+				if (! Object.keys(request).length) {
+					return setTimeout(() => this.show(attempts + 1), (attempts + 1) * (attempts + 1) * 100)
+				}
+
+				this.render(new Request(request))
+			})
 	}
 
 	render(request) {
