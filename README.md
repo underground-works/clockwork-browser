@@ -28,6 +28,12 @@
 	<a href="https://underground.works/clockwork">
 		<img width="100%" src="https://github.com/underground-works/clockwork-browser/raw/master/.github/assets/features-6.png">
 	</a>
+	<a href="https://underground.works/clockwork">
+		<img width="100%" src="https://github.com/underground-works/clockwork-browser/raw/master/.github/assets/features-7.png">
+	</a>
+	<a href="https://underground.works/clockwork">
+		<img width="100%" src="https://github.com/underground-works/clockwork-browser/raw/master/.github/assets/features-8.png">
+	</a>
 </p>
 
 ### Installation
@@ -54,11 +60,11 @@ import 'clockwork-browser/toolbar'
 You can also load the client-side scripts form a cdn:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/underground-works/clockwork-browser@0/dist/metrics.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/underground-works/clockwork-browser@0/dist/toolbar.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/underground-works/clockwork-browser@1/dist/metrics.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/underground-works/clockwork-browser@1/dist/toolbar.js"></script>
 ```
 
-The cdn builds are transpiled to support all browsers with more than 1% market share. The cdn bundle sizes are *7.11K for metrics.js* and *24.2K for toolbar.js*.
+The cdn builds are transpiled to support all browsers with more than 1% market share. The cdn bundle sizes are *6.14K for metrics.js* and *23.8K for toolbar.js*.
 
 Read the full installation guide on the [Clockwork website](https://underground.works/clockwork).
 
