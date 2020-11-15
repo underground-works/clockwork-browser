@@ -1,6 +1,6 @@
 {
   "name": "clockwork-browser",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Clockwork client-side metrics collection and toolbar.",
   "homepage": "https://underground.works/clockwork",
   "repository": "github:underground-works/clockwork-browser",
@@ -10,7 +10,13 @@
     "url": "https://github.com/underground-works/clockwork-browser/issues"
   },
   "keywords": [
-    "debugging", "profiling", "logging", "laravel", "lumen", "slim", "devtools"
+    "debugging",
+    "profiling",
+    "logging",
+    "laravel",
+    "lumen",
+    "slim",
+    "devtools"
   ],
   "main": "index.js",
   "scripts": {
