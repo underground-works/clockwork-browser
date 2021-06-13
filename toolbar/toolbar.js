@@ -10,6 +10,7 @@ export default class Toolbar
 		this.enabled = payload.toolbar
 		this.requestId = payload.requestId
 		this.path = payload.path || '/__clockwork/'
+		this.webPath = payload.webPath || '/clockwork/app'
 	}
 
 	show(attempts = 0) {
@@ -141,7 +142,7 @@ export default class Toolbar
 					<span class="clockwork-toolbar-details-label">
 						Show details
 					</span>
-					<a href="/clockwork/app#${request.id}" target="_blank" class="clockwork-toolbar-details-button">
+					<a href="${this.webPath}#${request.id}" target="_blank" class="clockwork-toolbar-details-button">
 						${icons.arrowRight}
 					</a>
 				</div>
