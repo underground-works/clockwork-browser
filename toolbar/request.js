@@ -52,7 +52,7 @@ export default class Request
 
 		let total = parseInt(data.databaseQueriesCount) || queries.length
 		let slow = parseInt(data.databaseSlowQueries)
-			|| queries.filter(query => query.tags.includes('slow')).length
+			|| queries.filter(query => query.tags && query.tags.includes('slow')).length
 		let selects = parseInt(data.databaseSelects)
 			|| queries.filter(query => query.query.match(/^select /i)).length
 		let inserts = parseInt(data.databaseInserts)
