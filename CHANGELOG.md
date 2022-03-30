@@ -1,3 +1,7 @@
+1.1.1
+
+- fixed crash when the metadata contains queries without tags (reported by Etmolf, thanks)
+
 1.1
 
 - improved detail button link now respects web UI path setting
