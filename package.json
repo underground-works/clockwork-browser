@@ -1,6 +1,6 @@
 {
   "name": "clockwork-browser",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Clockwork client-side metrics collection and toolbar.",
   "homepage": "https://underground.works/clockwork",
   "repository": "github:underground-works/clockwork-browser",
