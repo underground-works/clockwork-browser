@@ -4,13 +4,14 @@ import styles from './styles'
 
 export default class Toolbar
 {
-	constructor() {
-		let payload = this.payload()
+	constructor(payload) {
+		payload = { ...this.payload(), ...payload }
 
 		this.enabled = payload.toolbar
 		this.requestId = payload.requestId
 		this.path = payload.path || '/__clockwork/'
 		this.webPath = payload.webPath || '/clockwork/app'
+		this.cspNonce = payload.cspNonce || document.head.querySelector('meta[name="csp-nonce"]')?.getAttribute("content")
 	}
 
 	show(attempts = 0) {
@@ -156,6 +157,7 @@ export default class Toolbar
 
 		let toolbar = document.createElement('div')
 		toolbar.innerHTML = html
+		if (this.cspNonce) toolbar.nonce = this.cspNonce
 
 		document.querySelector('body').append(toolbar)
 	}
@@ -229,6 +231,7 @@ export default class Toolbar
 	appendStyles() {
 		let style = document.createElement('style')
 		style.innerHTML = styles
+		if (this.cspNonce) style.nonce = this.cspNonce
 
 		document.querySelector('body').append(style)
 	}

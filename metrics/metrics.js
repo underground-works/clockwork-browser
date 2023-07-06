@@ -2,8 +2,8 @@ import { getCLS, getFID, getLCP, getFCP, getTTFB } from 'web-vitals'
 
 export default class Metrics
 {
-	constructor() {
-		let payload = this.payload()
+	constructor(payload = {}) {
+		payload = { ...this.payload(), ...payload }
 
 		this.enabled = payload.metrics
 		this.requestId = payload.requestId
